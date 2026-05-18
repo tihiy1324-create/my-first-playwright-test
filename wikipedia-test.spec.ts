@@ -1,6 +1,7 @@
 import { test, expect } from '@playwright/test';
 
-test('Открыть Википедию и проверить заголовок', async ({ page }) => {
-  await page.goto('https://ru.wikipedia.org');
-  await expect(page).toHaveTitle('Википедия — свободная энциклопедия');
+test('Проверить текст на локальном сайте', async ({ page }) => {
+  await page.goto('file:///T:/Projects/test-site.html');
+  const heading = page.locator('h1');
+  await expect(heading).toHaveText('Привет, Тимур!');
 });
